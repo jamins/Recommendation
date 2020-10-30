@@ -1,0 +1,26 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #f2f8fc;
+}
+
+.login {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 500px;
+  align-items: center;
+  border-right: 1px solid black;
+}
+
+.recommendation {
+  width: 50%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
