@@ -6,7 +6,7 @@ const Content = () => {
         <div className="container">
             <div className="left-column">
                 <div className="login">
-                    <input />
+                    <input type='text' placeholder='Например, Sweet_Alcatel'/>
                     <button>Логин</button>
                 </div>
                 <div className="information">
