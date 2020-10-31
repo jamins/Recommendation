@@ -21,6 +21,10 @@ input {
   width: 100%;
 }
 
+input:focus {
+  outline: 1px solid black;
+}
+
 .login {
   width: 50%;
   display: flex;
@@ -50,9 +54,10 @@ input {
   text-align: center;
 }
 
-@media(max-device-width: 500px) {
+
+
+@media(max-device-width: 890px) {
   input {
-    height: 50px;
     width: 50%;
   }
 }

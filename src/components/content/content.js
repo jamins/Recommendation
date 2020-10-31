@@ -2,11 +2,20 @@ import React from 'react';
 import './content.css';
 
 const Content = () => {
+
+    const fetchData = async () => {
+        const response = await fetch('https://culture-recommendation-service.herokuapp.com/recommendations/1');
+        const data = await response.json();
+        console.log(data);
+    };
+
+    fetchData();
+
     return (
         <div className="container">
             <div className="left-column">
                 <div className="login">
-                    <input type='text' placeholder='Например, Sweet_Alcatel'/>
+                    <input type='text' />
                     <button>Логин</button>
                 </div>
                 <div className="information">
