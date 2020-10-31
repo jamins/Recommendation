@@ -13,4 +13,4 @@ def get_recommendations_by_user_id(user_id):
     
     result = cursor.fetchall()
     
-    return jsonify([{"info1": row["INFO1"], "info2": row["INFO2"] from row in result}])
+    return jsonify(["info1": row["INFO1"], "info2": row["INFO2"] from row in result])
