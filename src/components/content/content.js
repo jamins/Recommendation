@@ -1,27 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './content.css';
 
 const Content = () => {
 
-    const fetchData = async () => {
-        const response = await fetch('https://culture-recommendation-service.herokuapp.com/recommendations/1');
-        const data = await response.json();
-        console.log(data);
-    };
+    const [login, setLogin] = useState('');
 
-    fetchData();
+    console.log(login);
 
-    return (
-        <div className="container">
-            <div className="left-column">
-                <div className="login">
-                    <input type='text' id='login'/>
-                    <button form='login'>Логин</button>
+    const Choice = () => {
+
+        const authorization = (
+            <div className="authorization">
+                    <p>
+                    Вам необходима авторизация
+                    </p>
                 </div>
-                <div className="information">
-                    <p>Некоторая информация!</p>
-                </div>
-            </div>
+        );
+          
+        const recommendation = (
             <div className="recommendation">
                 <div className="string-recommendation">
                     <h2>Мероприятия</h2>
@@ -36,6 +32,31 @@ const Content = () => {
                     <p>Текст</p>
                 </div>
             </div>
+        );
+
+        if (login === '') {
+            return (
+                authorization
+            );
+        } else if (login !== '') {
+            return (
+                recommendation
+            );
+        };
+    };
+
+    return (
+        <div className="container">
+            <div className="left-column">
+                <div className="login">
+                    <input type='text' id='login' />
+                    <button form='login' onClick={setLogin}>Логин</button>
+                </div>
+                <div className="information">
+                    <p>Некоторая информация</p>
+                </div>
+            </div>
+            <Choice />
         </div>
     );
 };
