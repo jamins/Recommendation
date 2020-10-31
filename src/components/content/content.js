@@ -15,8 +15,8 @@ const Content = () => {
         <div className="container">
             <div className="left-column">
                 <div className="login">
-                    <input type='text' />
-                    <button>Логин</button>
+                    <input type='text' id='login'/>
+                    <button form='login'>Логин</button>
                 </div>
                 <div className="information">
                     <p>Некоторая информация!</p>
