@@ -6,7 +6,7 @@ const BookItem = ({ data }) => {
     return (
         <div>
             <div className="books">
-                <p>{author[0]}</p>
+                <p>{author}</p>
                 <p>{name}</p>
                 <p>Возраст: для {age_rating}-летних</p>
                 <p>Год: {year}</p>

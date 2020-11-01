@@ -6,12 +6,13 @@ import PropTypes from 'prop-types';
 class Content extends Component {
     constructor(props) {
         super(props);
-        this.getData = this.getData.bind(this);
+        this.getBooks = this.getBooks.bind(this);
     };
 
     state = {
         value: 0,
-        data: []
+        data: [],
+        events: []
     };
 
     PropTypes = {
@@ -28,36 +29,37 @@ class Content extends Component {
         });
     };
 
-    getData = async () => {
+    getBooks = async () => {
         await fetch(`https://culture-recommendation-service.herokuapp.com/recommendations/${this.state.value}`)
         .then(response => response.json())
         .then(data => this.setState({
-            ...this.state,
             data: data
         }))
         .catch(err => console.log(err));
     };
+ 
+    
 
     componentDidMount() {
-        this.getData();
+        this.getBooks();
     };
 
     componentDidUpdate(prevProps) {
         if(this.state.value !== prevProps.value) {
-            setTimeout(() => this.getData(), 1000);
+            setTimeout(() => this.getBooks(), 1000);
         };
     };
 
     componentWillUnmount() {
-        if(this.state.value === null) {
-            clearInterval(setTimeout(() => this.getData(), 1000))
+        if(this.state.value) {
+            clearInterval(setTimeout(() => this.getBooks(), 1000))
         };
     };
 
     onClick = () => {
         const { value } = this.state;
         this.setState({
-            value: value + 1 
+            value: value + 1
         });
     };
 
@@ -88,7 +90,7 @@ class Content extends Component {
                         <h2>Книги</h2>
                         <ol>
                             <li key={this.id.map((id) => {
-                            return id.id
+                                return id.id
                             })}>
                             {data.map((data) => {
                             return <BookItem key={this.maxId++} data={data}/>
