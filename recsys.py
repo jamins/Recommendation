@@ -61,20 +61,37 @@ class EmbeddingNet(nn.Module):
 
 
 
-weights = torch.load("books_weights.pt", map_location=torch.device('cpu'))
+book_weights = torch.load("books_weights.pt", map_location=torch.device('cpu'))
 
 n = 450509
 m = 624908
 
-net = EmbeddingNet(
+book_net = EmbeddingNet(
     n_users=n, n_books=m, 
     n_factors=25, hidden=[50, 50], 
     embedding_dropout=0.05, dropouts=[0.5, 0.5])
 
-net.load_state_dict(weights, strict=False)
-net.eval()
+book_net.load_state_dict(book_weights)
+book_net.eval()
 
-def predict(features):
+def predict_book(features):
     tmp_tensor = torch.LongTensor(features)
-    return net(tmp_tensor[:,0], tmp_tensor[:,1])
+    return book_net(tmp_tensor[:,0], tmp_tensor[:,1])
 
+"""clf_weights = torch.load("clf_weights.pt", map_location=torch.device('cpu'))
+
+n = 289169
+m = 26678
+
+clf_net = EmbeddingNet(
+   n_users=n, n_books=m,
+   n_factors=50, hidden=[200, 200, 200],
+   embedding_dropout=0.05, dropouts=[0.5, 0.5, 0.25])
+
+clf_net.load_state_dict(clf_weights)
+clf_net.eval()
+
+def predict_clf(features):
+    tmp_tensor = torch.LongTensor(features)
+    return clf_net(tmp_tensor[:,0], tmp_tensor[:,1])
+"""
