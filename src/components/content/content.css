@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 900px;
+  height: 1700px;
   align-items: center;
   border-right: 1px solid rgba(0, 0, 0, 0.3);
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
@@ -74,7 +74,7 @@ input:active {
 
 .recommendation {
   width: 50%;
-  height: 900px;
+  height: 1700px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -82,19 +82,6 @@ input:active {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-.authorization {
-  width: 50%;
-  height: 800px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-.authorization p {
-  font-size: 25px;
-}
 
 .string-recommendation,
 .string-recommendation-2 {

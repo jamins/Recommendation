@@ -10,7 +10,7 @@ class Content extends Component {
     };
 
     state = {
-        value: 0,
+        value: 1,
         data: [],
         events: []
     };
@@ -30,9 +30,11 @@ class Content extends Component {
     };
 
     getBooks = async () => {
-        await fetch(`https://culture-recommendation-service.herokuapp.com/recommendations/${this.state.value}`)
+        const { value } = this.state;
+        await fetch(`https://culture-recommendation-service.herokuapp.com/recommendations/books/${value}`)
         .then(response => response.json())
         .then(data => this.setState({
+            ...this.state,
             data: data
         }))
         .catch(err => console.log(err));
